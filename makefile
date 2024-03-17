@@ -1,5 +1,5 @@
 P=Principal
-MAIN_CLASS=app.$(P)
+MAIN_CLASS=aplicacion.$(P)
 SRC_DIR=./src
 OUT_DIR=bin
 LIB_DIR=./lib
@@ -16,7 +16,7 @@ jar:compilar
 	@echo "" >> manifest.txt
 	jar cvfm $(JAR_FILE) manifest.txt  -C  $(OUT_DIR) .
 ejecutar:compilar
-	java -cp $(OUT_DIR) $(MAIN_CLASS) 
+	java -cp $(OUT_DIR) $(MAIN_CLASS)
 limpiar:
 	rm -rf $(OUT_DIR)
 	rm -rf $(DOC_DIR)
@@ -27,5 +27,5 @@ debug: compilar
 
 	find $(SRC_DIR) -name *.java | xargs javac -g -cp $(OUT_DIR):$(LIB_DIR) -d $(OUT_DIR)
 	cd bin; jdb -sourcepath ../src
-runjar: jar	
-	java -jar $(JAR_FILE) 
+runjar: jar
+	java -jar $(JAR_FILE)
